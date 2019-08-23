@@ -41,6 +41,6 @@ WKCTextEditView 文本编辑视图;
 | contentFont | 内容字体 |
 | contentColor | 字体颜色 |
 
-![Alt text](https://github.com/WKCLoveYang/WKCStickerView/raw/master/Source/1.jpg).
+![Alt text](https://github.com/WKCLoveYang/WKCStickerView/raw/master/Source/1.png).
 
 
