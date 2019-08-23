@@ -34,9 +34,9 @@
         if (self.delegate && [self.delegate respondsToSelector:@selector(textEditViewDidTapContent:)]) {
             [self.delegate textEditViewDidTapContent:self];
         }
-    } else if (sender.view == self.deleteControl) {
-        if (self.delegate && [self.delegate respondsToSelector:@selector(textEditViewDidTapDelete:)]) {
-            [self.delegate textEditViewDidTapDelete:self];
+    } else if (sender.view == self.leftTopControl) {
+        if (self.delegate && [self.delegate respondsToSelector:@selector(textEditViewDidTapLeftTop:)]) {
+            [self.delegate textEditViewDidTapLeftTop:self];
         }
     } else if (sender.view == self.rightTopControl) {
         if (self.delegate && [self.delegate respondsToSelector:@selector(textEditViewDidTapRightTop:)]) {

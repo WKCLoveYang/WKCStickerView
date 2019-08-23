@@ -37,9 +37,9 @@
         if (self.delegate && [self.delegate respondsToSelector:@selector(stickerViewDidTapContent:)]) {
             [self.delegate stickerViewDidTapContent:self];
         }
-    } else if (sender.view == self.deleteControl) {
-        if (self.delegate && [self.delegate respondsToSelector:@selector(stickerViewDidTapDelete:)]) {
-            [self.delegate stickerViewDidTapDelete:self];
+    } else if (sender.view == self.leftTopControl) {
+        if (self.delegate && [self.delegate respondsToSelector:@selector(stickerViewDidTapLeftTop:)]) {
+            [self.delegate stickerViewDidTapLeftTop:self];
         }
     } else if (sender.view == self.rightTopControl) {
         if (self.delegate && [self.delegate respondsToSelector:@selector(stickerViewDidTapRightTop:)]) {

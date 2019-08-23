@@ -12,8 +12,8 @@
 @interface WKCEditBaseView()
 <UIGestureRecognizerDelegate>
 
-@property (nonatomic, strong) UIImageView * deleteControl;
 @property (nonatomic, strong) UIImageView * resizeControl;
+@property (nonatomic, strong) UIImageView * leftTopControl;
 @property (nonatomic, strong) UIImageView * leftBottomControl;
 @property (nonatomic, strong) UIImageView * rightTopControl;
 @property (nonatomic, strong) CAShapeLayer * shapeLayer;
@@ -41,7 +41,7 @@
         self.exclusiveTouch = YES;
         self.userInteractionEnabled = YES;
         self.resizeControl.userInteractionEnabled = YES;
-        self.deleteControl.userInteractionEnabled = YES;
+        self.leftTopControl.userInteractionEnabled = YES;
         self.rightTopControl.userInteractionEnabled = YES;
         self.leftBottomControl.userInteractionEnabled = YES;
         
@@ -82,14 +82,14 @@
     return _resizeControl;
 }
 
-- (UIImageView *)deleteControl
+- (UIImageView *)leftTopControl
 {
-    if (!_deleteControl) {
-        _deleteControl = [[UIImageView alloc] init];
-        _deleteControl.contentMode = UIViewContentModeScaleAspectFit;
+    if (!_leftTopControl) {
+        _leftTopControl = [[UIImageView alloc] init];
+        _leftTopControl.contentMode = UIViewContentModeScaleAspectFit;
     }
     
-    return _deleteControl;
+    return _leftTopControl;
 }
 
 - (UIImageView *)rightTopControl
@@ -194,7 +194,7 @@
 {
     self.contentView.frame = CGRectMake(self.controlSize.width / 2.0, self.controlSize.height / 2.0, self.frame.size.width, self.frame.size.height);
     self.resizeControl.frame = CGRectMake(CGRectGetMaxX(self.contentView.frame) - self.controlSize.width / 2.0, CGRectGetMaxY(self.contentView.frame) - self.controlSize.height / 2.0, self.controlSize.width, self.controlSize.height);
-    self.deleteControl.frame = CGRectMake(0, 0, self.controlSize.width, self.controlSize.height);
+    self.leftTopControl.frame = CGRectMake(0, 0, self.controlSize.width, self.controlSize.height);
     self.rightTopControl.frame = CGRectMake(CGRectGetMaxX(self.contentView.frame) - self.controlSize.width / 2.0, 0, self.controlSize.width, self.controlSize.height);
     self.leftBottomControl.frame = CGRectMake(0, CGRectGetMaxY(self.contentView.frame) - self.controlSize.height / 2.0, self.controlSize.width, self.controlSize.height);
     
@@ -206,14 +206,14 @@
     [self addSubview:self.contentView];
     [self.contentView.layer addSublayer:self.shapeLayer];
     [self addSubview:self.resizeControl];
-    [self addSubview:self.deleteControl];
+    [self addSubview:self.leftTopControl];
     [self addSubview:self.rightTopControl];
     [self addSubview:self.leftBottomControl];
 }
 
 - (void)setupGestures
 {
-    [self.deleteControl addGestureRecognizer:self.tapRecognizer];
+    [self.leftTopControl addGestureRecognizer:self.tapRecognizer];
     [self.rightTopControl addGestureRecognizer:self.tapRecognizer];
     [self.leftBottomControl addGestureRecognizer:self.tapRecognizer];
     [self.contentView addGestureRecognizer:self.rotateGesture];
@@ -268,7 +268,7 @@
     CGFloat minY = originalCenter.y - self.contentView.bounds.size.height / 2.0;
     
     self.resizeControl.center = CGPointApplyAffineTransform(CGPointMake(maxX, maxY), self.contentView.transform);
-    self.deleteControl.center = CGPointApplyAffineTransform(CGPointMake(minX, minY), self.contentView.transform);
+    self.leftTopControl.center = CGPointApplyAffineTransform(CGPointMake(minX, minY), self.contentView.transform);
     self.rightTopControl.center = CGPointApplyAffineTransform(CGPointMake(maxX, minY), self.contentView.transform);
     self.leftBottomControl.center = CGPointApplyAffineTransform(CGPointMake(minX, maxY), self.contentView.transform);
 }
@@ -282,6 +282,11 @@
     } else if (scale * currentScale >= self.maxScale) {
         scale = self.maxScale / currentScale;
     }
+}
+
+- (void)deleteFromSuperView
+{
+    [self removeFromSuperview];
 }
 
 #pragma marl -Gestures
@@ -323,9 +328,8 @@
         
         [self handleTapContentView];
         
-    } else if (sender.view == self.deleteControl) {
-        [self removeFromSuperview];
-        
+    } else if (sender.view == self.leftTopControl) {
+
     } else if (sender.view == self.rightTopControl) {
         
     } else if (sender.view == self.leftBottomControl) {
@@ -363,8 +367,8 @@
             return self.resizeControl;
         }
         
-        if ([self.deleteControl pointInside:[self convertPoint:point toView:self.deleteControl] withEvent:event]) {
-            return self.deleteControl;
+        if ([self.leftTopControl pointInside:[self convertPoint:point toView:self.leftTopControl] withEvent:event]) {
+            return self.leftTopControl;
         }
         
         if ([self.rightTopControl pointInside:[self convertPoint:point toView:self.rightTopControl] withEvent:event]) {
@@ -390,10 +394,10 @@
     _resizeControl.image = rorationImage;
 }
 
-- (void)setDeleteImage:(UIImage *)deleteImage
+- (void)setLeftTopImage:(UIImage *)leftTopImage
 {
-    _deleteImage = deleteImage;
-    _deleteControl.image = deleteImage;
+    _leftTopImage = leftTopImage;
+    _leftTopControl.image = leftTopImage;
 }
 
 - (void)setLeftBottomImage:(UIImage *)leftBottomImage
@@ -443,7 +447,7 @@
 {
     _isActivity = isActivity;
     
-    _deleteControl.hidden = !isActivity;
+    _leftTopControl.hidden = !isActivity;
     _resizeControl.hidden = !isActivity;
     _rightTopControl.hidden = !isActivity;
     _leftBottomControl.hidden = !isActivity;

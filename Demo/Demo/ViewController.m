@@ -21,14 +21,14 @@
     [super viewDidLoad];
     
     WKCStickerView * stickerView = [[WKCStickerView alloc] initWithFrame:CGRectMake(100, 100, 150, 150)];
-    stickerView.deleteImage = [UIImage imageNamed:@"1"];
+    stickerView.leftTopImage = [UIImage imageNamed:@"1"];
     stickerView.rorationImage = [UIImage imageNamed:@"1"];
     stickerView.leftBottomImage = [UIImage imageNamed:@"1"];
     stickerView.rightTopImage = [UIImage imageNamed:@"1"];
     stickerView.contentImage = [UIImage imageNamed:@"1"];
     
     WKCTextEditView * textView = [[WKCTextEditView alloc] initWithFrame:CGRectMake(100, 300, 150, 150)];
-    textView.deleteImage = [UIImage imageNamed:@"1"];
+    textView.leftTopImage = [UIImage imageNamed:@"1"];
     textView.rorationImage = [UIImage imageNamed:@"1"];
     textView.leftBottomImage = [UIImage imageNamed:@"1"];
     textView.rightTopImage = [UIImage imageNamed:@"1"];

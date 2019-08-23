@@ -21,10 +21,10 @@
 - (void)stickerViewDidTapContent:(WKCStickerView *)stickerView;
 
 /**
- 删除
+ 左上按钮
  @param stickerView 当前对象
  */
-- (void)stickerViewDidTapDelete:(WKCStickerView *)stickerView;
+- (void)stickerViewDidTapLeftTop:(WKCStickerView *)stickerView;
 
 /**
  左下按钮
@@ -37,6 +37,7 @@
  @param stickerView 当前对象
  */
 - (void)stickerViewDidTapRightTop:(WKCStickerView *)stickerView;
+
 
 
 @end

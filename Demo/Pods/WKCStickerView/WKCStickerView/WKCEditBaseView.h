@@ -11,8 +11,8 @@
 
 @interface WKCEditBaseView : UIView
 
-@property (nonatomic, strong, readonly) UIImageView * deleteControl;
 @property (nonatomic, strong, readonly) UIImageView * resizeControl;
+@property (nonatomic, strong, readonly) UIImageView * leftTopControl;
 @property (nonatomic, strong, readonly) UIImageView * leftBottomControl;
 @property (nonatomic, strong, readonly) UIImageView * rightTopControl;
 
@@ -47,9 +47,9 @@
 @property (nonatomic, strong) UIImage * rorationImage;
 
 /**
- 删除视图
+ 左上视图
  */
-@property (nonatomic, strong) UIImage * deleteImage;
+@property (nonatomic, strong) UIImage * leftTopImage;
 
 /**
  左下角视图
@@ -114,6 +114,11 @@
   重置子视图的坐标
  */
 - (void)setUpSubviewsFrames;
+
+/**
+  从父视图删除
+ */
+- (void)deleteFromSuperView;
 
 /**
   点击手势
