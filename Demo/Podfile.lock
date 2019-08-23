@@ -1,0 +1,16 @@
+PODS:
+  - WKCStickerView (1.1.0)
+
+DEPENDENCIES:
+  - WKCStickerView
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - WKCStickerView
+
+SPEC CHECKSUMS:
+  WKCStickerView: 3b89a427535309e2951876432eeac6b69c4654c0
+
+PODFILE CHECKSUM: 9d6b26980b49b27a4c71ac5e561039726b5786dd
+
+COCOAPODS: 1.7.5

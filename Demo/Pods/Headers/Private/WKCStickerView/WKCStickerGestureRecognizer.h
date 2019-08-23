@@ -1,0 +1,1 @@
+../../../WKCStickerView/WKCStickerView/WKCStickerGestureRecognizer.h

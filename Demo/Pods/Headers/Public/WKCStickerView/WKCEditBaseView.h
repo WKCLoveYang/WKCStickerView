@@ -1,0 +1,1 @@
+../../../WKCStickerView/WKCStickerView/WKCEditBaseView.h

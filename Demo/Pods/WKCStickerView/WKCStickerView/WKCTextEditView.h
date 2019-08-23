@@ -21,10 +21,10 @@
 - (void)textEditViewDidTapContent:(WKCTextEditView *)textEditView;
 
 /**
- 左上按钮
+ 删除
  @param textEditView 当前对象
  */
-- (void)textEditViewDidTapLeftTop:(WKCTextEditView *)textEditView;
+- (void)textEditViewDidTapDelete:(WKCTextEditView *)textEditView;
 
 /**
  左下按钮
