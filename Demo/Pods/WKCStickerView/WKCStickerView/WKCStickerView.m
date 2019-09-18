@@ -38,6 +38,7 @@
             [self.delegate stickerViewDidTapContent:self];
         }
     } else if (sender.view == self.leftTopControl) {
+        
         if (self.delegate && [self.delegate respondsToSelector:@selector(stickerViewDidTapLeftTop:)]) {
             [self.delegate stickerViewDidTapLeftTop:self];
         }

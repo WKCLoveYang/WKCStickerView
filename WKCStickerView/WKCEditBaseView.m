@@ -21,7 +21,10 @@
 @property (nonatomic, strong) UIRotationGestureRecognizer *rotateGesture;
 @property (nonatomic, strong) UIPinchGestureRecognizer *pinGesture;
 @property (nonatomic, strong) UIPanGestureRecognizer *panGesture;
-@property (nonatomic, strong) UITapGestureRecognizer *tapRecognizer;
+@property (nonatomic, strong) UITapGestureRecognizer *tapRecognizer1;
+@property (nonatomic, strong) UITapGestureRecognizer *tapRecognizer2;
+@property (nonatomic, strong) UITapGestureRecognizer *tapRecognizer3;
+@property (nonatomic, strong) UITapGestureRecognizer *tapRecognizer4;
 @property (nonatomic, strong) WKCStickerGestureRecognizer * stickerGesture;
 
 @end
@@ -161,16 +164,50 @@
     return _panGesture;
 }
 
-- (UITapGestureRecognizer *)tapRecognizer
+- (UITapGestureRecognizer *)tapRecognizer1
 {
-    if (!_tapRecognizer) {
-        _tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(gestureTap:)];
-        _tapRecognizer.numberOfTapsRequired = 1;
-        _tapRecognizer.delegate = self;
+    if (!_tapRecognizer1) {
+        _tapRecognizer1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(gestureTap:)];
+        _tapRecognizer1.numberOfTapsRequired = 1;
+        _tapRecognizer1.delegate = self;
     }
     
-    return _tapRecognizer;
+    return _tapRecognizer1;
 }
+
+- (UITapGestureRecognizer *)tapRecognizer2
+{
+    if (!_tapRecognizer2) {
+        _tapRecognizer2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(gestureTap:)];
+        _tapRecognizer2.numberOfTapsRequired = 1;
+        _tapRecognizer2.delegate = self;
+    }
+    
+    return _tapRecognizer2;
+}
+
+- (UITapGestureRecognizer *)tapRecognizer3
+{
+    if (!_tapRecognizer3) {
+        _tapRecognizer3 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(gestureTap:)];
+        _tapRecognizer3.numberOfTapsRequired = 1;
+        _tapRecognizer3.delegate = self;
+    }
+    
+    return _tapRecognizer3;
+}
+
+- (UITapGestureRecognizer *)tapRecognizer4
+{
+    if (!_tapRecognizer4) {
+        _tapRecognizer4 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(gestureTap:)];
+        _tapRecognizer4.numberOfTapsRequired = 1;
+        _tapRecognizer4.delegate = self;
+    }
+    
+    return _tapRecognizer4;
+}
+
 
 - (WKCStickerGestureRecognizer *)stickerGesture
 {
@@ -213,13 +250,13 @@
 
 - (void)setupGestures
 {
-    [self.leftTopControl addGestureRecognizer:self.tapRecognizer];
-    [self.rightTopControl addGestureRecognizer:self.tapRecognizer];
-    [self.leftBottomControl addGestureRecognizer:self.tapRecognizer];
+    [self.leftTopControl addGestureRecognizer:self.tapRecognizer1];
+    [self.rightTopControl addGestureRecognizer:self.tapRecognizer2];
+    [self.leftBottomControl addGestureRecognizer:self.tapRecognizer3];
     [self.contentView addGestureRecognizer:self.rotateGesture];
     [self.contentView addGestureRecognizer:self.pinGesture];
     [self.contentView addGestureRecognizer:self.panGesture];
-    [self.contentView addGestureRecognizer:self.tapRecognizer];
+    [self.contentView addGestureRecognizer:self.tapRecognizer4];
     [self.resizeControl addGestureRecognizer:self.stickerGesture];
 }
 
@@ -324,6 +361,7 @@
 
 - (void)gestureTap:(UITapGestureRecognizer *)sender
 {
+    
     if (sender.view == self.contentView) {
         
         [self handleTapContentView];
