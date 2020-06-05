@@ -18,13 +18,16 @@
 @property (nonatomic, strong) UIImageView * rightTopControl;
 @property (nonatomic, strong) CAShapeLayer * shapeLayer;
 
+
 @property (nonatomic, strong) UIRotationGestureRecognizer *rotateGesture;
 @property (nonatomic, strong) UIPinchGestureRecognizer *pinGesture;
 @property (nonatomic, strong) UIPanGestureRecognizer *panGesture;
+
 @property (nonatomic, strong) UITapGestureRecognizer *tapRecognizer1;
 @property (nonatomic, strong) UITapGestureRecognizer *tapRecognizer2;
 @property (nonatomic, strong) UITapGestureRecognizer *tapRecognizer3;
 @property (nonatomic, strong) UITapGestureRecognizer *tapRecognizer4;
+
 @property (nonatomic, strong) WKCStickerGestureRecognizer * stickerGesture;
 
 @end
@@ -75,6 +78,7 @@
     [self setUpSubviewsFrames];
 }
 
+#pragma mark -Lazy
 - (UIImageView *)resizeControl
 {
     if (!_resizeControl) {
@@ -114,6 +118,7 @@
     
     return _leftBottomControl;
 }
+
 
 - (CAShapeLayer *)shapeLayer
 {
@@ -219,6 +224,7 @@
 }
 
 
+#pragma mark -InnerMethod
 - (CGRect)resetFrameWithOrigin:(CGRect)origin
 {
     return CGRectMake(origin.origin.x - _controlSize.width / 2.0,
@@ -229,7 +235,7 @@
 
 - (void)setUpSubviewsFrames
 {
-    self.contentView.frame = CGRectMake(self.controlSize.width / 2.0, self.controlSize.height / 2.0, self.frame.size.width, self.frame.size.height);
+    self.contentView.frame = CGRectMake(self.controlSize.width / 2.0, self.controlSize.height / 2.0, self.frame.size.width - self.controlSize.width, self.frame.size.height - self.controlSize.height);
     self.resizeControl.frame = CGRectMake(CGRectGetMaxX(self.contentView.frame) - self.controlSize.width / 2.0, CGRectGetMaxY(self.contentView.frame) - self.controlSize.height / 2.0, self.controlSize.width, self.controlSize.height);
     self.leftTopControl.frame = CGRectMake(0, 0, self.controlSize.width, self.controlSize.height);
     self.rightTopControl.frame = CGRectMake(CGRectGetMaxX(self.contentView.frame) - self.controlSize.width / 2.0, 0, self.controlSize.width, self.controlSize.height);
@@ -273,9 +279,7 @@
     if (!self.notTapBringToFront) {
         [self.superview bringSubviewToFront:self];
     }
-    
     self.isActivity = YES;
-    
     if (self.shouldAnimation) {
         [self performShakeAnimation:self];
     }
@@ -331,17 +335,14 @@
 {
     self.contentView.transform = CGAffineTransformRotate(self.contentView.transform, sender.rotation);
     sender.rotation = 0;
-    
     [self relocalControlView];
 }
 
 - (void)gesturePin:(UIPinchGestureRecognizer *)sender
 {
     [self scaleLimit:sender.scale];
-    
     self.contentView.transform = CGAffineTransformScale(self.contentView.transform, sender.scale, sender.scale);
     sender.scale = 1;
-    
     [self relocalControlView];
 }
 
@@ -361,11 +362,8 @@
 
 - (void)gestureTap:(UITapGestureRecognizer *)sender
 {
-    
     if (sender.view == self.contentView) {
-        
         [self handleTapContentView];
-        
     } else if (sender.view == self.leftTopControl) {
 
     } else if (sender.view == self.rightTopControl) {
@@ -385,7 +383,6 @@
     
     [self relocalControlView];
 }
-
 
 #pragma mark - UIGestureRecognizerDelegate
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
@@ -422,7 +419,7 @@
         return _contentView;
     }
     
-    return nil;
+    return [super hitTest:point withEvent:event];
 }
 
 #pragma mark -Setter

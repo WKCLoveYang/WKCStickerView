@@ -192,7 +192,7 @@
 
 - (void)setUpSubviewsFrames
 {
-    self.contentView.frame = CGRectMake(self.controlSize.width / 2.0, self.controlSize.height / 2.0, self.frame.size.width, self.frame.size.height);
+    self.contentView.frame = CGRectMake(self.controlSize.width / 2.0, self.controlSize.height / 2.0, self.frame.size.width - self.controlSize.width, self.frame.size.height - self.controlSize.height);
     self.resizeControl.frame = CGRectMake(CGRectGetMaxX(self.contentView.frame) - self.controlSize.width / 2.0, CGRectGetMaxY(self.contentView.frame) - self.controlSize.height / 2.0, self.controlSize.width, self.controlSize.height);
     self.leftTopControl.frame = CGRectMake(0, 0, self.controlSize.width, self.controlSize.height);
     self.rightTopControl.frame = CGRectMake(CGRectGetMaxX(self.contentView.frame) - self.controlSize.width / 2.0, 0, self.controlSize.width, self.controlSize.height);

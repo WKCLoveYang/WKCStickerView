@@ -13,29 +13,20 @@
 @protocol WKCStickerViewDelegate <NSObject>
 
 @optional
-
-/**
-  点击了内容视图
-  @param stickerView 当前对象
- */
+/// 点击了内容视图
+/// @param stickerView 当前对象
 - (void)stickerViewDidTapContent:(WKCStickerView *)stickerView;
 
-/**
- 左上按钮
- @param stickerView 当前对象
- */
+/// 左上按钮
+/// @param stickerView 当前对象
 - (void)stickerViewDidTapLeftTop:(WKCStickerView *)stickerView;
 
-/**
- 左下按钮
- @param stickerView 当前对象
- */
+/// 左下按钮
+/// @param stickerView 当前对象
 - (void)stickerViewDidTapLeftBottom:(WKCStickerView *)stickerView;
 
-/**
- 右上按钮
- @param stickerView 当前对象
- */
+/// 右上按钮
+/// @param stickerView 当前对象
 - (void)stickerViewDidTapRightTop:(WKCStickerView *)stickerView;
 
 
@@ -45,14 +36,10 @@
 
 @interface WKCStickerView : WKCEditBaseView
 
-/**
-  代理
- */
+/// 代理
 @property (nonatomic, weak) id <WKCStickerViewDelegate> delegate;
 
-/**
-  贴纸
- */
+/// 贴纸
 @property (nonatomic, strong) UIImage * contentImage;
 
 

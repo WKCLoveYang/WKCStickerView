@@ -9,17 +9,14 @@
 #import "WKCStickerView.h"
 #import "WKCStickerGestureRecognizer.h"
 
-@interface WKCStickerView()
 
 
-@end
 
 @implementation WKCStickerView
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self.contentView = [[UIImageView alloc] init];
-    self.contentView.contentMode = UIViewContentModeScaleAspectFit;
     self.contentView.layer.masksToBounds = YES;
     
     if (self = [super initWithFrame:frame]) {
